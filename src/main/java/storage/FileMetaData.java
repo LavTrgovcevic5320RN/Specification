@@ -1,9 +1,6 @@
 package storage;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * FileMetaData opisuje fajl koji se nalazi unutar skladista.
@@ -15,9 +12,6 @@ public class FileMetaData {
     private Date created;
     private long byteSize;
     private Type type;
-    private long byteSizeQuota = 2L * 1024 * 1024 * 1024;
-    private List<String> illegalExtensions = new ArrayList<>();
-    private Integer maxNumberOfFiles = 5;
     public enum Type {
         DIRECTORY,
         FILE
@@ -83,29 +77,5 @@ public class FileMetaData {
 
     public void setType(Type type) {
         this.type = type;
-    }
-
-    public long getByteSizeQuota() {
-        return byteSizeQuota;
-    }
-
-    public void setByteSizeQuota(long byteSizeQuota) {
-        this.byteSizeQuota = byteSizeQuota;
-    }
-
-    public List<String> getIllegalExtensions() {
-        return illegalExtensions;
-    }
-
-    public void setIllegalExtensions(List<String> illegalExtensions) {
-        this.illegalExtensions = illegalExtensions;
-    }
-
-    public Integer getMaxNumberOfFiles() {
-        return maxNumberOfFiles;
-    }
-
-    public void setMaxNumberOfFiles(Integer maxNumberOfFiles) {
-        this.maxNumberOfFiles = maxNumberOfFiles;
     }
 }
