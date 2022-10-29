@@ -1,36 +1,42 @@
 import exceptions.InvalidConstraintException;
+import storage.StorageConstraint;
 
 import java.util.Collection;
 import java.util.Date;
 
-public interface Storage {
+public abstract class Storage {
+	protected StorageConstraint storageConstraint;
+	public StorageConstraint getStorageConstraint() { return storageConstraint;	}
 
 	//  operacije nad skladistem
-	void initialiseDirectory(String storageName, String path, int size, int MaxFiles, String...st);
-	void setStorageSize(int bytes);
-	void setMaxNumberOfFiles(int number);
-	void create(String name, String path);
-	void create(String name, String path, String pattern);
-	void uploadFiles(String path) throws InvalidConstraintException;
-	void delete(String path);
-	void moveFile(String file, String path, String pathGoal) throws InvalidConstraintException;
-	void moveFiles(Collection<String> files, String path, String pathGoal) throws InvalidConstraintException;
-	void download(String path, String pathGoal);
-	void rename(String newName, String path);
-	long getStorageByteSize();
+	public abstract void initialiseDirectory(String path, String storageName, int size, int MaxFiles, String... bannedExtensions);
+	public abstract void openDirectory(String path);
+	public abstract void setStorageSize(int bytes);
+	public abstract void create(String name, String path);
+	public abstract void create(String name, String path, int maxFiles);
+	public abstract void setMaxFiles(String path, int maxFiles);
+	public abstract void create(String name, String path, String pattern);
+	public abstract void uploadFile(String destination, String filePath) throws InvalidConstraintException;
+	public abstract void uploadFiles(String source, String destination,  String... files) throws InvalidConstraintException;
+	public abstract void delete(String path);
+	public abstract void moveFile(String file, String path, String pathGoal) throws InvalidConstraintException;
+	public abstract void moveFiles(Collection<String> files, String path, String pathGoal) throws InvalidConstraintException;
+	public abstract void download(String path, String pathGoal);
+	public abstract void rename(String newName, String path);
+	public abstract long getStorageByteSize();
 
 	//  operacije pretrazivanja
-	Collection<String> searchFilesInDirectory(String directoryPath);
-	// ?????????????????????????????????????
-	Collection<String> searchFilesInAllDirectories(String directoryPath);
-	Collection<String> searchFilesInDirectoryAndBelow(String directoryPath);
-	Collection<String> searchFilesWithExtension(String extension);
-	Collection<String> searchFilesThatContain(String fileName);
-	boolean searchIfFilesExist(String path, String... fileNames);
-	String searchFile(String fileName);
-	Date getCreationDate(String path);
-	Date getModificationDate(String path);
-	Collection<String> searchByNameSorted(String fileName, Boolean rast);
-	Collection<String> searchByDirectoryDateRange(Date start, Date end, String directoryPath);
+	public abstract Collection<String> searchFilesInDirectory(String directoryPath);
+	// trazi u poddirektorijumima trenutnog direktorijuma
+	public abstract Collection<String> searchFilesInAllDirectories(String directoryPath);
+	public abstract Collection<String> searchFilesInDirectoryAndBelow(String directoryPath);
+	public abstract Collection<String> searchFilesWithExtension(String extension);
+	public abstract Collection<String> searchFilesThatContain(String fileName);
+	public abstract boolean searchIfFilesExist(String path, String... fileNames);
+	public abstract String searchFile(String fileName);
+	public abstract Date getCreationDate(String path);
+	public abstract Date getModificationDate(String path);
+	public abstract Collection<String> searchByNameSorted(String fileName, Boolean rast);
+	public abstract Collection<String> searchByDirectoryDateRange(Date start, Date end, String directoryPath);
 
 }
