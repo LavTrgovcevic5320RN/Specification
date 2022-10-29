@@ -1,4 +1,3 @@
-import exceptions.FileException;
 import exceptions.InvalidConstraintException;
 
 import java.util.Collection;
@@ -7,11 +6,11 @@ import java.util.Date;
 public interface Storage {
 
 	//  operacije nad skladistem
-	void initialiseStorage(String storageName, String path);
+	void initialiseDirectory(String storageName, String path, int size, int MaxFiles, String...st);
 	void setStorageSize(int bytes);
 	void setMaxNumberOfFiles(int number);
-	void createDirectory(String name, String path);
-	void createDirectory(String name, String path, String pattern);
+	void create(String name, String path);
+	void create(String name, String path, String pattern);
 	void uploadFiles(String path) throws InvalidConstraintException;
 	void delete(String path);
 	void moveFile(String file, String path, String pathGoal) throws InvalidConstraintException;
