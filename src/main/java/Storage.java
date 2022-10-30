@@ -1,6 +1,7 @@
 import exceptions.InvalidConstraintException;
 import storage.StorageConstraint;
 
+import java.io.FileNotFoundException;
 import java.util.Collection;
 import java.util.Date;
 
@@ -19,7 +20,7 @@ public abstract class Storage {
 	public abstract void uploadFile(String destination, String filePath) throws InvalidConstraintException;
 	public abstract void uploadFiles(String source, String destination,  String... files) throws InvalidConstraintException;
 	public abstract void delete(String path);
-	public abstract void moveFile(String file, String path, String pathGoal) throws InvalidConstraintException;
+	public abstract void moveFile(String destination, String... sources) throws InvalidConstraintException, FileNotFoundException;
 	public abstract void moveFiles(Collection<String> files, String path, String pathGoal) throws InvalidConstraintException;
 	public abstract void download(String path, String pathGoal);
 	public abstract void rename(String newName, String path);
