@@ -30,4 +30,13 @@ public class StorageConstraint implements Serializable {
     public void setMaxNumberOfFiles(HashMap<String, Integer> maxNumberOfFiles) {
         this.maxNumberOfFiles = maxNumberOfFiles;
     }
+
+    @Override
+    public String toString() {
+        return "StorageConstraint{" +
+                "byteSizeQuota=" + byteSizeQuota +
+                ", illegalExtensions=" + illegalExtensions +
+                ", maxNumberOfFiles=" + maxNumberOfFiles +
+                '}';
+    }
 }
