@@ -26,10 +26,10 @@ public abstract class Storage {
 	public abstract long getStorageByteSize();
 
 	//  operacije pretrazivanja
-	public abstract Collection<String> searchFilesInDirectory(String path, String name);
+	public abstract Collection<String> searchFilesInDirectory(String path);
 	// trazi u poddirektorijumima trenutnog direktorijuma
-	public abstract Collection<String> searchFilesInAllDirectories(String path, String name);
-	public abstract Collection<String> searchFilesInDirectoryAndBelow(String path, String name);
+	public abstract Collection<String> searchFilesInAllDirectories(String path);
+	public abstract Collection<String> searchFilesInDirectoryAndBelow(String path);
 	public abstract Collection<String> searchFilesWithExtension(String path, String extension);
 	public abstract Collection<String> searchFilesThatContain(String path, String substring);
 	public abstract boolean searchIfFilesExist(String path, String... fileNames);
