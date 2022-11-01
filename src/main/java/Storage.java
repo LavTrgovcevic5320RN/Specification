@@ -20,19 +20,18 @@ public abstract class Storage {
 	public abstract void uploadFile(String destination, String filePath) throws InvalidConstraintException;
 	public abstract void uploadFiles(String source, String destination,  String... files) throws InvalidConstraintException;
 	public abstract void delete(String path);
-	public abstract void moveFile(String destination, String... sources) throws InvalidConstraintException, FileNotFoundException;
-	public abstract void moveFiles(Collection<String> files, String path, String pathGoal) throws InvalidConstraintException;
+	public abstract void moveFiles(String destination, String... sources) throws InvalidConstraintException, FileNotFoundException;
 	public abstract void download(String path, String pathGoal);
 	public abstract void rename(String newName, String path);
 	public abstract long getStorageByteSize();
 
 	//  operacije pretrazivanja
-	public abstract Collection<String> searchFilesInDirectory(String directoryPath);
+	public abstract Collection<String> searchFilesInDirectory(String path, String name);
 	// trazi u poddirektorijumima trenutnog direktorijuma
-	public abstract Collection<String> searchFilesInAllDirectories(String directoryPath);
-	public abstract Collection<String> searchFilesInDirectoryAndBelow(String directoryPath);
-	public abstract Collection<String> searchFilesWithExtension(String extension);
-	public abstract Collection<String> searchFilesThatContain(String fileName);
+	public abstract Collection<String> searchFilesInAllDirectories(String path, String name);
+	public abstract Collection<String> searchFilesInDirectoryAndBelow(String path, String name);
+	public abstract Collection<String> searchFilesWithExtension(String path, String extension);
+	public abstract Collection<String> searchFilesThatContain(String path, String substring);
 	public abstract boolean searchIfFilesExist(String path, String... fileNames);
 	public abstract String searchFile(String fileName);
 	public abstract Date getCreationDate(String path);
