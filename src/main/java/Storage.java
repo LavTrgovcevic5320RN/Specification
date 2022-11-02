@@ -12,18 +12,20 @@ public abstract class Storage {
 	//  operacije nad skladistem
 	public abstract void initialiseDirectory(String path, String storageName, int size, int MaxFiles, String... bannedExtensions);
 	public abstract void openDirectory(String path);
-	public abstract void setStorageSize(int bytes);
 	public abstract void create(String name, String path);
 	public abstract void create(String name, String path, int maxFiles);
 	public abstract void setMaxFiles(String path, int maxFiles);
 	public abstract void createExpanded(String path, String pattern);
-	public abstract void uploadFile(String destination, String filePath) throws InvalidConstraintException;
-	public abstract void uploadFiles(String source, String destination,  String... files) throws InvalidConstraintException;
+	public abstract void uploadFiles(String destination, String... files) throws InvalidConstraintException;
 	public abstract void delete(String path);
 	public abstract void moveFiles(String destination, String... sources) throws InvalidConstraintException, FileNotFoundException;
 	public abstract void download(String path, String pathGoal);
 	public abstract void rename(String newName, String path);
 	public abstract long getStorageByteSize();
+	public abstract void setSizeQuota(long bytes);
+	public long getSizeQuota() {
+		return storageConstraint.getByteSizeQuota();
+	}
 
 	//  operacije pretrazivanja
 	public abstract Collection<String> searchFilesInDirectory(String path);
