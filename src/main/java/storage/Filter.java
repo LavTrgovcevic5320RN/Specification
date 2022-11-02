@@ -2,6 +2,7 @@ package storage;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.stream.Collectors;
 
 public class Filter {
     private Date startDate = new Date(Long.MIN_VALUE), endDate = new Date(Long.MAX_VALUE);
@@ -28,7 +29,20 @@ public class Filter {
     }
 
     public Collection<FileMetaData> applyFilter(Collection<FileMetaData> toFilter) {
-        return null;
+        return toFilter.stream().filter(fileMetaData -> {
+            boolean ok = true;
+            ok = (fileMetaData.getByteSize() >= minSize && fileMetaData.getByteSize() <= maxSize);
+            Date toCompare = null;
+            if (filterDateType != null) {
+                switch (filterDateType) {
+                    case ACCESS -> toCompare = fileMetaData.getLastAccessed();
+                    case CREATE -> toCompare = fileMetaData.getCreated();
+                    case MODIFY -> toCompare = fileMetaData.getLastModified();
+                }
+                ok &= (toCompare.after(startDate) && toCompare.before(endDate));
+            }
+            return ok;
+        }).collect(Collectors.toList());
     }
 }
 

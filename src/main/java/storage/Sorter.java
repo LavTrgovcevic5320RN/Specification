@@ -1,6 +1,10 @@
 package storage;
 
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Sorter {
     private DateType sortDateType = null;
@@ -15,6 +19,15 @@ public class Sorter {
     }
 
     public Collection<FileMetaData> applySorter(Collection<FileMetaData> toSort) {
-        return null;
+        List<FileMetaData> ret = null;
+        if(sortDateType == null) {
+            ret = toSort.stream().sorted(Comparator.comparing(FileMetaData::getName)).collect(Collectors.toList());
+        } else switch(sortDateType) {
+            case ACCESS -> ret = toSort.stream().sorted(Comparator.comparing(FileMetaData::getLastAccessed)).collect(Collectors.toList());
+            case CREATE -> ret = toSort.stream().sorted(Comparator.comparing(FileMetaData::getCreated)).collect(Collectors.toList());
+            case MODIFY -> ret = toSort.stream().sorted(Comparator.comparing(FileMetaData::getLastModified)).collect(Collectors.toList());
+        }
+        if(!ascending) Collections.reverse(ret);
+        return ret;
     }
 }
