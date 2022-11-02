@@ -4,9 +4,9 @@ import java.util.Collection;
 import java.util.Date;
 
 public class Filter {
-    private Date startDate, endDate;
-    private long minSize, maxSize;
-    private DateType filterDateType;
+    private Date startDate = new Date(Long.MIN_VALUE), endDate = new Date(Long.MAX_VALUE);
+    private long minSize = -1, maxSize = Long.MAX_VALUE;
+    private DateType filterDateType = null;
 
     public Filter(long minSize, long maxSize) {
         this.minSize = minSize;

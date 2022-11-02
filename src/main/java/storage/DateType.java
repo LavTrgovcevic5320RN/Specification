@@ -1,6 +1,7 @@
 package storage;
 
-enum DateType {
+public enum DateType {
     CREATE,
+    ACCESS,
     MODIFY
 }

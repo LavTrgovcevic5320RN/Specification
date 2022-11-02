@@ -26,7 +26,7 @@ public class FileMetaData {
 
     public FileMetaData(String name, String fullPath, Date lastModified, Date lastAccessed, Date created, long byteSize, Type type) {
         this.name = name;
-        this.fullPath = fullPath;
+        this.fullPath = fullPath.replace('\\', '/');
         this.lastModified = lastModified;
         this.lastAccessed = lastAccessed;
         this.created = created;

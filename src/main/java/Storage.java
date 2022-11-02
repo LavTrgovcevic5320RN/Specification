@@ -1,4 +1,5 @@
 import exceptions.InvalidConstraintException;
+import storage.DateType;
 import storage.FileMetaData;
 import storage.StorageConstraint;
 
@@ -40,6 +41,6 @@ public abstract class Storage {
 	public abstract Date getCreationDate(String path);
 	public abstract Date getModificationDate(String path);
 	public abstract Collection<FileMetaData> searchByNameSorted(String fileName, Boolean rast);
-	public abstract Collection<FileMetaData> searchByDirectoryDateRange(Date start, Date end, String directoryPath);
+	public abstract Collection<FileMetaData> searchByDirectoryDateRange(Date startDate, Date endDate, DateType sortDateType, String path);
 
 }
