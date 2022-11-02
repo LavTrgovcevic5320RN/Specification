@@ -14,6 +14,7 @@ public class FileMetaData {
     private Date created;
     private long byteSize;
     private Type type;
+    private boolean printFully = false;
     public enum Type {
         DIRECTORY,
         FILE
@@ -36,12 +37,12 @@ public class FileMetaData {
 
     @Override
     public String toString() {
-       return fullPath;
+       return printFully ? fullPath : name;
     }
 
     private static final SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
     public String fullInfo() {
-        return String.format("%s Modified:%s, Accessed:%s, Created:%s, %dB, %s", name, format.format(lastModified), format.format(lastAccessed), format.format(created), byteSize, type.toString());
+        return String.format("%s Modified:%s, Accessed:%s, Created:%s, %dB, %s", printFully ? fullPath : name , format.format(lastModified), format.format(lastAccessed), format.format(created), byteSize, type.toString());
     }
 
     public String getFullPath() {
@@ -98,5 +99,13 @@ public class FileMetaData {
 
     public void setType(Type type) {
         this.type = type;
+    }
+
+    public boolean isPrintFully() {
+        return printFully;
+    }
+
+    public void setPrintFully(boolean printFully) {
+        this.printFully = printFully;
     }
 }

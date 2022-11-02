@@ -22,12 +22,13 @@ public class Sorter {
         List<FileMetaData> ret = null;
         if(sortDateType == null) {
             ret = toSort.stream().sorted(Comparator.comparing(FileMetaData::getName)).collect(Collectors.toList());
+            if(ascending) Collections.reverse(ret);
         } else switch(sortDateType) {
             case ACCESS -> ret = toSort.stream().sorted(Comparator.comparing(FileMetaData::getLastAccessed)).collect(Collectors.toList());
             case CREATE -> ret = toSort.stream().sorted(Comparator.comparing(FileMetaData::getCreated)).collect(Collectors.toList());
             case MODIFY -> ret = toSort.stream().sorted(Comparator.comparing(FileMetaData::getLastModified)).collect(Collectors.toList());
         }
-        if(!ascending) Collections.reverse(ret);
+        //if(ascending) Collections.reverse(ret);
         return ret;
     }
 }
