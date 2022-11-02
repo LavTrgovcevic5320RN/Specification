@@ -28,17 +28,17 @@ public abstract class Storage {
 	}
 
 	//  operacije pretrazivanja
-	public abstract Collection<String> searchFilesInDirectory(String path);
+	public abstract Collection<FileMetaData> searchFilesInDirectory(String path);
 	// trazi u poddirektorijumima trenutnog direktorijuma
-	public abstract Collection<String> searchFilesInAllDirectories(String path);
-	public abstract Collection<String> searchFilesInDirectoryAndBelow(String path);
-	public abstract Collection<String> searchFilesWithExtension(String path, String extension);
-	public abstract Collection<String> searchFilesThatContain(String path, String substring);
+	public abstract Collection<FileMetaData> searchFilesInAllDirectories(String path);
+	public abstract Collection<FileMetaData> searchFilesInDirectoryAndBelow(String path);
+	public abstract Collection<FileMetaData> searchFilesWithExtension(String path, String extension);
+	public abstract Collection<FileMetaData> searchFilesThatContain(String path, String substring);
 	public abstract boolean searchIfFilesExist(String path, String... fileNames);
 	public abstract String searchFile(String fileName);
 	public abstract Date getCreationDate(String path);
 	public abstract Date getModificationDate(String path);
-	public abstract Collection<String> searchByNameSorted(String fileName, Boolean rast);
-	public abstract Collection<String> searchByDirectoryDateRange(Date start, Date end, String directoryPath);
+	public abstract Collection<FileMetaData> searchByNameSorted(String fileName, Boolean rast);
+	public abstract Collection<FileMetaData> searchByDirectoryDateRange(Date start, Date end, String directoryPath);
 
 }

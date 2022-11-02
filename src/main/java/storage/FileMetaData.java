@@ -1,5 +1,6 @@
 package storage;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -9,6 +10,7 @@ public class FileMetaData {
     private String name;
     private String fullPath;
     private Date lastModified;
+    private Date lastAccessed;
     private Date created;
     private long byteSize;
     private Type type;
@@ -22,13 +24,24 @@ public class FileMetaData {
         this.fullPath = fullPath;
     }
 
-    public FileMetaData(String name, String fullPath, Date lastModified, Date created, long byteSize, Type type) {
+    public FileMetaData(String name, String fullPath, Date lastModified, Date lastAccessed, Date created, long byteSize, Type type) {
         this.name = name;
         this.fullPath = fullPath;
         this.lastModified = lastModified;
+        this.lastAccessed = lastAccessed;
         this.created = created;
         this.byteSize = byteSize;
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+       return fullPath;
+    }
+
+    private static final SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+    public String fullInfo() {
+        return String.format("%s Created:%s, Modified:%s, %dB, %s", name, format.format(lastModified), format.format(created), byteSize, type.toString());
     }
 
     public String getFullPath() {
@@ -69,6 +82,14 @@ public class FileMetaData {
 
     public void setCreated(Date created) {
         this.created = created;
+    }
+
+    public Date getLastAccessed() {
+        return lastAccessed;
+    }
+
+    public void setLastAccessed(Date lastAccessed) {
+        this.lastAccessed = lastAccessed;
     }
 
     public void setByteSize(long byteSize) {
