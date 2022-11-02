@@ -41,7 +41,7 @@ public class FileMetaData {
 
     private static final SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
     public String fullInfo() {
-        return String.format("%s Created:%s, Modified:%s, %dB, %s", name, format.format(lastModified), format.format(created), byteSize, type.toString());
+        return String.format("%s Modified:%s, Accessed:%s, Created:%s, %dB, %s", name, format.format(lastModified), format.format(lastAccessed), format.format(created), byteSize, type.toString());
     }
 
     public String getFullPath() {

@@ -36,7 +36,7 @@ public abstract class Storage {
 	public abstract Collection<FileMetaData> searchFilesWithExtension(String path, String extension);
 	public abstract Collection<FileMetaData> searchFilesThatContain(String path, String substring);
 	public abstract boolean searchIfFilesExist(String path, String... fileNames);
-	public abstract String searchFile(String fileName);
+	public abstract Collection<String> searchFile(String fileName);
 	public abstract Date getCreationDate(String path);
 	public abstract Date getModificationDate(String path);
 	public abstract Collection<FileMetaData> searchByNameSorted(String fileName, Boolean rast);
