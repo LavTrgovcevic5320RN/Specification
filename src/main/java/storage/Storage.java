@@ -1,3 +1,5 @@
+package storage;
+
 import exceptions.InvalidConstraintException;
 import storage.DateType;
 import storage.FileMetaData;
@@ -21,7 +23,7 @@ public abstract class Storage {
 	public abstract void uploadFiles(String destination, String... files) throws InvalidConstraintException;
 	public abstract void delete(String path);
 	public abstract void moveFiles(String destination, String... sources) throws InvalidConstraintException, FileNotFoundException;
-	public abstract void download(String path, String pathGoal);
+	public abstract void download(String destination, String... sources);
 	public abstract void rename(String newName, String path);
 	public abstract long getStorageByteSize();
 	public abstract void setSizeQuota(long bytes);
