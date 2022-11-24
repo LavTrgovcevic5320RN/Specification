@@ -9,7 +9,32 @@ import java.util.Date;
 public abstract class Storage {
 	protected StorageConstraint storageConstraint;
 	public StorageConstraint getStorageConstraint() { return storageConstraint;	}
-
+	//init path name [--size n] [--max-files n] [--banned-extensions list=.exe,.jpg,.zip]
+	//open path
+	//create storage-path [--max-files n]
+	//create [--expand] regex
+	//set-max-files path max-files
+	//upload local-path storage-path
+	//move storage-path storage-path
+	//delete storage-path
+	//download storage-path local-path
+	//rename storage-path new-name
+	//get-storage-size
+	//byte-quota [--set n] [--get]
+	//ls path
+	//search rezultat treba da se zapamti u neki result set
+	//search --global name
+	//search --recursive pocetni
+	//search path --extension extension...
+	//search path --in-name substring
+	//search path --exists file...
+	//search --for name
+	//na poslednji result set se primenjuju sorteri i filteri
+	//filter --by-date modify/create/access start-date end-date
+	//filter --by-size min-size max-size
+	//sort --by-name ascending/descending
+	//sort --by-date  modify/create/access ascending/descending
+	//sort --by-size ascending/descending
 	//  operacije nad skladistem
 	public abstract void initialiseDirectory(String path, String storageName, int size, int MaxFiles, String... bannedExtensions);
 	public abstract void openDirectory(String path);
@@ -32,6 +57,7 @@ public abstract class Storage {
 	public abstract Collection<FileMetaData> searchFilesInDirectory(String path);
 	// trazi u poddirektorijumima trenutnog direktorijuma
 	public abstract Collection<FileMetaData> searchFilesInAllDirectories(String path);
+	//todo dodati pocetni direktorijum
 	public abstract Collection<FileMetaData> searchFilesInDirectoryAndBelow(String path);
 	public abstract Collection<FileMetaData> searchFilesWithExtension(String path, String extension);
 	public abstract Collection<FileMetaData> searchFilesThatContain(String path, String substring);
