@@ -1,9 +1,6 @@
 package storage;
 
 import exceptions.InvalidConstraintException;
-import storage.DateType;
-import storage.FileMetaData;
-import storage.StorageConstraint;
 
 import java.io.FileNotFoundException;
 import java.util.Collection;
@@ -40,9 +37,7 @@ public abstract class Storage {
 	public abstract Collection<FileMetaData> searchFilesThatContain(String path, String substring);
 	public abstract boolean searchIfFilesExist(String path, String... fileNames);
 	public abstract Collection<String> searchFile(String fileName);
-	public abstract Date getCreationDate(String path);
-	public abstract Date getModificationDate(String path);
-	public abstract Collection<FileMetaData> searchByNameSorted(String fileName, Boolean rast);
+	public abstract Collection<FileMetaData> searchByNameSorted(String fileName, boolean rastuce);
 	public abstract Collection<FileMetaData> searchByDirectoryDateRange(Date startDate, Date endDate, DateType sortDateType, String path);
 
 }
