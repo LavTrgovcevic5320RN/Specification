@@ -139,13 +139,6 @@ public abstract class Storage {
 	 */
 	public abstract Collection<FileMetaData> searchFilesInDirectory(String path);
 
-	/**
-	 * Metoda kojom pretrazujemo samo u svim direktorijumima
-	 *
-	 * @param path putanja na kojoj pretrazujemo
-	 * @return kolekcija fajlova dobijenih iz pretrage
-	 */
-	public abstract Collection<FileMetaData> searchFilesInAllDirectories(String path);
 
 	/**
 	 * Metoda kojom pretrazujemo samo u svim direktorijumu i poddirektorijumima

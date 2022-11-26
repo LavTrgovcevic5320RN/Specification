@@ -8,7 +8,6 @@ public class StorageManager {
     }
 
     public static Storage getStorage(String path){
-        storage.setFileName(path);
         return storage;
     }
 }
