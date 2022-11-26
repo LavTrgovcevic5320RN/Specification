@@ -57,9 +57,6 @@ public abstract class Storage {
 
 	//  operacije pretrazivanja
 	public abstract Collection<FileMetaData> searchFilesInDirectory(String path);
-	// trazi u poddirektorijumima trenutnog direktorijuma
-	public abstract Collection<FileMetaData> searchFilesInAllDirectories(String path);
-	//todo dodati pocetni direktorijum
 	public abstract Collection<FileMetaData> searchFilesInDirectoryAndBelow(String path);
 	public abstract Collection<FileMetaData> searchFilesWithExtension(String path, String extension);
 	public abstract Collection<FileMetaData> searchFilesThatContain(String path, String substring);
