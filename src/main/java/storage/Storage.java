@@ -7,6 +7,8 @@ import java.util.Collection;
 import java.util.Date;
 
 public abstract class Storage {
+	protected String fileName;
+
 	protected StorageConstraint storageConstraint;
 	public StorageConstraint getStorageConstraint() { return storageConstraint;	}
 	//init path name [--size n] [--max-files n] [--banned-extensions list=.exe,.jpg,.zip]
@@ -66,4 +68,7 @@ public abstract class Storage {
 	public abstract Collection<FileMetaData> searchByNameSorted(String fileName, boolean rastuce);
 	public abstract Collection<FileMetaData> searchByDirectoryDateRange(Date startDate, Date endDate, DateType sortDateType, String path);
 
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 }
